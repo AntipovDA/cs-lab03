@@ -82,8 +82,22 @@ int main() {
     printf ("Windows decimal-version is %u.\n", version);
     printf ("Windows 16x-version is %x.\n", version);
     printf ("Platform is %u.\n", platform);
-    printf ("Windows major version is %u.\n", version);
-    printf ("Windows minor version is %u.\n", version);
+    printf ("Windows major version is %u.\n", version_major);
+    printf ("Windows minor version is %u.\n", version_minor);
+    if ((info & 0x40000000) == 0);
+    {
+        DWORD build = platform;
+        printf ("Windows build is %u.\n", build);
+    }
+    printf ("Windows v%u.%u (build %u)\n", version_major, version_minor, platform);
+    char system_dir[MAX_PATH];
+    char computer_name[MAX_COMPUTERNAME_LENGTH+1];
+    DWORD size = sizeof(computer_name);
+    GetSystemDirectory(system_dir, MAX_PATH);
+    GetComputerName(computer_name, &size);
+    printf ("System directory: %s\n", system_dir);
+    printf ("Computer name: %s\n", computer_name);
+
     return 0;
 
     // ¬вод данных
