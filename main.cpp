@@ -69,10 +69,6 @@ void show_histogram_text(vector<size_t> bins) {
 
 
 int main() {
-
-    printf("n = %08x\n", 0x1234567);
-
-    return 0;
     // ¬вод данных
     size_t number_count;
     cerr << "Enter number count: ";
