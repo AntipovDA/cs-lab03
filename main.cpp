@@ -3,7 +3,9 @@
 #include <string>
 #include "histogram.h"
 #include "svg.h"
+#include <windows.h>
 using namespace std;
+DWORD WINAPI GetVersion(void);
 
 vector<double> input_numbers(const size_t count) {
     vector<double> result(count);
@@ -66,9 +68,17 @@ void show_histogram_text(vector<size_t> bins) {
     }
 
 }
-
+DWORD WINAPI GetVersion(void);
+int printf(const char* format, ...);
 
 int main() {
+    DWORD dwVersion =0;
+    dwVersion = GetVersion();
+    DWORD info = GetVersion();
+    printf ("Windows 16x-version is %x\n", info);
+    printf ("Windows decimal-version is %u\n", info);
+    return 0;
+
     // ¬вод данных
     size_t number_count;
     cerr << "Enter number count: ";
