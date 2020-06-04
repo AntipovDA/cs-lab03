@@ -39,7 +39,7 @@ string custome_width(double width, double BLOCK_WIDTH, size_t number_count) {
     return str;
 }
 
-void show_histogram_svg(const vector<size_t>& bins, size_t number_count) {
+void show_histogram_svg(const vector<size_t>& bins, size_t number_count, char computer_name[], DWORD version_major, DWORD version_minor, DWORD build) {
     const auto IMAGE_HEIGHT = 300;
     const auto TEXT_LEFT = 20;
     const auto TEXT_BASELINE = 20;
@@ -87,5 +87,8 @@ void show_histogram_svg(const vector<size_t>& bins, size_t number_count) {
         svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT, "red", "green");
         top += BIN_HEIGHT;
     }
+    cout << "<text x='" << left << "' y='" << top + TEXT_BASELINE << "'>Computer name: " << computer_name << "</text>";
+    cout << "<text x='" << left << "' y='" << top + 2*TEXT_BASELINE << "'>Windows v" << version_major << "."
+    << version_minor << " (build " << build << ")</text>";
     svg_end();
 }

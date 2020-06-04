@@ -5,7 +5,6 @@
 #include "svg.h"
 #include <windows.h>
 using namespace std;
-DWORD WINAPI GetVersion(void);
 
 vector<double> input_numbers(const size_t count) {
     vector<double> result(count);
@@ -68,8 +67,6 @@ void show_histogram_text(vector<size_t> bins) {
     }
 
 }
-DWORD WINAPI GetVersion(void);
-int printf(const char* format, ...);
 
 int main() {
     DWORD mask = 0x0000ffff;
@@ -79,26 +76,26 @@ int main() {
     DWORD version = info & mask;
     DWORD version_major = version & mask_major;
     DWORD version_minor = version >>8;
-    printf ("Windows decimal-version is %u.\n", version);
-    printf ("Windows 16x-version is %x.\n", version);
-    printf ("Platform is %u.\n", platform);
-    printf ("Windows major version is %u.\n", version_major);
-    printf ("Windows minor version is %u.\n", version_minor);
+    //printf ("Windows decimal-version is %u.\n", version);
+    //printf ("Windows 16x-version is %x.\n", version);
+    //printf ("Platform is %u.\n", platform);
+    //printf ("Windows major version is %u.\n", version_major);
+    //printf ("Windows minor version is %u.\n", version_minor);
     if ((info & 0x40000000) == 0);
     {
         DWORD build = platform;
-        printf ("Windows build is %u.\n", build);
+        //printf ("Windows build is %u.\n", build);
     }
-    printf ("Windows v%u.%u (build %u)\n", version_major, version_minor, platform);
+    //printf ("Windows v%u.%u (build %u)\n", version_major, version_minor, platform);
     char system_dir[MAX_PATH];
     char computer_name[MAX_COMPUTERNAME_LENGTH+1];
     DWORD size = sizeof(computer_name);
     GetSystemDirectory(system_dir, MAX_PATH);
     GetComputerName(computer_name, &size);
-    printf ("System directory: %s\n", system_dir);
-    printf ("Computer name: %s\n", computer_name);
+    //printf ("System directory: %s\n", system_dir);
+    //printf ("Computer name: %s\n", computer_name);
 
-    return 0;
+    //return 0;
 
     // Ввод данных
     size_t number_count;
@@ -117,7 +114,7 @@ int main() {
     const auto bins = make_histogram(numbers, bin_count);
 
     // Вывод данных
-    show_histogram_svg(bins, number_count);
+    show_histogram_svg(bins, number_count, computer_name, version_major, version_minor, platform);
 
     return 0;
 }
