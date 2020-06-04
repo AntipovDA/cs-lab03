@@ -4,20 +4,19 @@
 #include<vector>
 #include<string>
 #include<sstream>
-using namespace std;
 
 struct Input {
-    vector<double> numbers;
+    std::vector<double> numbers;
     size_t bin_count;
     size_t number_count;
     double width;
 };
-void find_minmax (const vector<double>& numbers, double& min, double& max);
+void find_minmax (const std::vector<double>& numbers, double& min, double& max);
 
-vector<size_t> make_histogram(const Input& data);
+std::vector<size_t> make_histogram(const Input& data);
 
-void show_histogram_text(vector<size_t> bins, Input& data);
+void show_histogram_text(std::vector<size_t> bins, Input& data);
 
-string custome_width(double width, double BLOCK_WIDTH, size_t number_count, size_t min, size_t max);
+std::string custome_width(double width, double BLOCK_WIDTH, size_t number_count, size_t min, size_t max);
 
 #endif

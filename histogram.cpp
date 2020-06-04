@@ -1,6 +1,7 @@
 #include<vector>
 #include"histogram.h"
 #include<iostream>
+
 using namespace std;
 
 void find_minmax (const vector<double>& numbers, double& min, double& max) {
@@ -32,6 +33,18 @@ vector<size_t> make_histogram(const Input& data) {
     }
 
     return result;
+}
+
+string custome_width(double width, double BLOCK_WIDTH, size_t number_count, size_t min, size_t max) {
+    stringstream str;
+    if (width < min)
+        str << "Width < " << min << ". Enter the width again:";
+    else if (width > max)
+        str << "Width > " << max << ". Enter the width again:";
+    else if (width < BLOCK_WIDTH*number_count/3)
+        str << "Width < number_count/3. Enter the width again:";
+
+    return str.str();
 }
 
 void show_histogram_text(const vector<size_t>& bins, Input& data) {
@@ -75,14 +88,4 @@ void show_histogram_text(const vector<size_t>& bins, Input& data) {
 
 }
 
-string custome_width(double width, double BLOCK_WIDTH, size_t number_count, size_t min, size_t max) {
-    stringstream str;
-    if (width < min)
-        str << "Width < " << min << ". Enter the width again:";
-    else if (width > max)
-        str << "Width > " << max << ". Enter the width again:";
-    else if (width < BLOCK_WIDTH*number_count/3)
-        str << "Width < number_count/3. Enter the width again:";
 
-    return str.str();
-}

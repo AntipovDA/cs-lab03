@@ -5,6 +5,7 @@
 #include<sstream>
 //#include "histogram.h"
 #include "svg.h"
+#include <windows.h>
 
 using namespace std;
 
@@ -18,6 +19,7 @@ vector<double> input_numbers(istream& in, const size_t count) {
 
     return result;
 }
+
 Input
 read_input(istream& in, bool prompt) {
     Input data;
@@ -101,9 +103,30 @@ int main(int argc, char* argv[]) {
         input = read_input(cin, true);
     }
 
+    DWORD mask = 0x0000ffff;
+    DWORD mask_major = 0x000000f;
+    DWORD info = GetVersion();
+    DWORD platform = info >> 16;
+    DWORD version = info & mask;
+    DWORD version_major = version & mask_major;
+    DWORD version_minor = version >>8;
+
+    if ((info & 0x40000000) == 0);
+    {
+        DWORD build = platform;
+    }
+
+    char system_dir[MAX_PATH];
+    char computer_name[MAX_COMPUTERNAME_LENGTH+1];
+    DWORD size = sizeof(computer_name);
+    GetSystemDirectory(system_dir, MAX_PATH);
+    GetComputerName(computer_name, &size);
+
+    // Обработка данных
     const auto bins = make_histogram(input);
 
-    show_histogram_svg(bins, input);
+    // Вывод данных
+    show_histogram_svg(bins, input.number_count, computer_name, version_major, version_minor, platform);
 
     return 0;
 }

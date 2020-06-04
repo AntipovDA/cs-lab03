@@ -4,15 +4,14 @@
 #include <vector>
 #include <string>
 #include"histogram.h"
-using namespace std;
+#include <windows.h>
 
 void svg_begin(double width, double height);
 void svg_end();
 void svg_text(double left, double baseline, size_t text);
-void svg_rect(double x, double y, double width, double height, string stroke = "black", string fill = "black");
+void svg_rect(double x, double y, double width, double height, std::string stroke = "black", std::string fill = "black");
+void show_histogram_svg(const std::vector<size_t>& bins, size_t number_count, char computer_name[], DWORD version_major, DWORD version_minor, DWORD build);
+std::string custome_width(double IMAGE_WIDTH,double BLOCK_WIDTH,size_t number_count);
 
+#endif // SVG_H_INCLUDED
 
-void show_histogram_svg(const vector<size_t>& bins, Input& data);
-
-
-#endif
