@@ -12,8 +12,19 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+<<<<<<< HEAD
+					<Add option="-std=c++14" />
+					<Add option="-g" />
+					<Add directory="curl/include" />
+				</Compiler>
+				<Linker>
+					<Add library="libcurl.dll.a" />
+					<Add directory="curl/lib" />
+				</Linker>
+=======
 					<Add option="-g" />
 				</Compiler>
+>>>>>>> lab04-2
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/lab03" prefix_auto="1" extension_auto="1" />
@@ -33,14 +44,29 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="histogram.cpp" />
+<<<<<<< HEAD
+		<Unit filename="histogram.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="main.cpp" />
+		<Unit filename="svg.cpp" />
+		<Unit filename="svg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+=======
 		<Unit filename="histogram.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="svg.cpp" />
 		<Unit filename="svg.h" />
+>>>>>>> lab04-2
 		<Extensions>
 			<code_completion />
 			<envvars />
 			<debugger />
+<<<<<<< HEAD
+			<lib_finder disable_auto="1" />
+=======
+>>>>>>> lab04-2
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
